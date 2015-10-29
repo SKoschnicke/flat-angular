@@ -48,6 +48,7 @@ function unflatten(target, opts) {
 
   var delimiter = opts.delimiter || '.'
   var overwrite = opts.overwrite || false
+  var angular = opts.angular || false
   var result = {}
 
   var isbuffer = isBuffer(target)
@@ -68,7 +69,36 @@ function unflatten(target, opts) {
   }
 
   Object.keys(target).forEach(function(key) {
-    var split = key.split(delimiter)
+    var split = []
+    if (angular) {
+      var lastChar = null;
+      var insideAngularExpression = false;
+      var currentPart = "";
+      key.split("").forEach(function(char) {
+        if (insideAngularExpression) {
+          if (char == "}" && lastChar == "}") {
+            insideAngularExpression = false;
+          }
+          currentPart += char;
+        } else {
+          if (char == delimiter) {
+            split.push(currentPart);
+            currentPart = "";
+          } else {
+            currentPart += char;
+            if (char == "{" && lastChar == "{") {
+              insideAngularExpression = true;
+            }
+          }
+        }
+        lastChar = char;
+      });
+      if (currentPart.length > 0) {
+        split.push(currentPart)
+      }
+    } else {
+      split = key.split(delimiter)
+    }
     var key1 = getkey(split.shift())
     var key2 = getkey(split[0])
     var recipient = result

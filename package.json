@@ -1,12 +1,12 @@
 {
-  "name": "flat",
+  "name": "flat-angular",
   "version": "1.6.0",
   "main": "index.js",
   "scripts": {
     "test": "mocha -u tdd --reporter spec"
   },
   "license": "BSD-3-Clause",
-  "description": "Take a nested Javascript object and flatten it, or unflatten an object with delimited keys",
+  "description": "Take a nested Javascript object and flatten it, or unflatten an object with delimited keys. Version with special handling of angular interpolations.",
   "devDependencies": {
     "mocha": "~1.6.0"
   },
@@ -16,7 +16,7 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git://github.com/hughsk/flat.git"
+    "url": "git://github.com/SKoschnicke/flat-angular.git"
   },
   "keywords": [
     "flat",
@@ -28,8 +28,11 @@
     "nested"
   ],
   "author": "Hugh Kennedy <hughskennedy@gmail.com> (http://hughskennedy.com)",
+  "contributors": [
+    "Sven Koschnicke <s.koschnicke@gfxpro.com> (http://www.gfxpro.com)"
+  ],
   "bugs": {
-    "url": "https://github.com/hughsk/flat/issues"
+    "url": "https://github.com/SKoschnicke/flat-angular/issues"
   },
-  "homepage": "https://github.com/hughsk/flat"
+  "homepage": "https://github.com/SKoschnicke/flat-angular"
 }

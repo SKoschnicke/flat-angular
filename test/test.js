@@ -263,6 +263,18 @@ suite('Unflatten', function() {
     }))
   })
 
+  test('Angular', function() {
+    assert.deepEqual({
+      "key": {
+        "with {{angular.expression}} in it": "value"
+      }
+    }, unflatten({
+      "key.with {{angular.expression}} in it": "value"
+    }, {
+      angular: true
+    }))
+  })
+
   suite('.safe', function() {
     test('Should protect arrays when true', function() {
       assert.deepEqual(flatten({
